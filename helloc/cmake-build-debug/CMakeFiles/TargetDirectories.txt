@@ -1,0 +1,3 @@
+/Users/doit/programeyard/Cyard/helloc/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/doit/programeyard/Cyard/helloc/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/doit/programeyard/Cyard/helloc/cmake-build-debug/CMakeFiles/helloc.dir
