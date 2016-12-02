@@ -7,7 +7,7 @@
 #include <signal.h>
 #include <unistd.h>
 
-#define STACK_SIZE = (1024 * 1024);
+#define STACK_SIZE (1024 * 1024)
 
 static char child_stack[STACK_SIZE];
 char * const child_args[] = {
