@@ -1,11 +1,4 @@
-#define _GNU_SOURCE
-
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <stdio.h>
-#include <sched.h>
-#include <signal.h>
-#include <unistd.h>
+#include "dockerc.h"
 
 #define STACK_SIZE (1024 * 1024)
 
@@ -16,17 +9,18 @@ char * const child_args[] = {
 };
 
 int child_main(void * args){
-    printf("in child proces\n");
+    printf("in child proces %d \n", getpid());
     execv(child_args[0], child_args);
     return 1;
 
 }
 
 int main(){
-    printf("start \n");
-    int in_child_process = clone(child_main,child_stack + STACK_SIZE, SIGCHLD, NULL);
-    waitpid(in_child_process, NULL, 0);
-    printf("已经退出\n");
+    printf("start %d \n", getpid());
+    int child_pid = clone(child_main,child_stack + STACK_SIZE, SIGCHLD, NULL);
+    int *ret = 0;
+    int wait = waitpid(child_pid, ret, 0);
+    printf("已经退出 wait : %d, ret : %d\n", wait, ret);
     return 0;
 
 }
